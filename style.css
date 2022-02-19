@@ -1,0 +1,47 @@
+body {
+    background-color: lightgray;
+    font-family: 'Staatliches', cursive;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    font-size: 75px;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.btn {
+    font-size: 100px;
+    margin: 50px;
+    text-decoration: none;
+    background: none;
+    border: none;
+}
+
+.text-line {
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    margin: 25px;
+    font-size: 30px;
+}
