@@ -18,17 +18,28 @@ computer.textContent = `Computer Score: ${computerScore}`;
 const output = document.querySelector("#output");
 output.textContent = "Click Rock, Paper, or Scissors to Start!"
 
-const update = document.querySelector("#update");
-update.textContent = ""
+const updateUser = document.querySelector("#update-user");
+updateUser.textContent = "User:"
+
+const updateComp = document.querySelector('#update-comp');
+updateComp.textContent = "Computer:"
+
+const userScoreId = document.getElementById('user-score');
+const compScoreId = document.getElementById('comp-score');
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalContainer = document.querySelector('.modal-container');
+const winnerOutput = document.querySelector('.winner-output');
+const restartBtn = document.querySelector('.restart');
+
 
 // BUTTON EVENT TO HTML
 buttons.forEach((button) => {button.addEventListener('click', () => {
-
-// WHEN A CERTAIN BUTTON IS CLICKED ITS PLACED INTO THE USERCHOICE VARIABLE AS INT
 userChoice = button.id;
 game(userChoice);
     });
 });
+
+restartBtn.addEventListener('click', restartGame);
 
 function computerPlay() {
 let compArray = ['rock', 'paper', 'scissors']; 
@@ -37,55 +48,38 @@ let random = Math.floor(Math.random() * compArray.length);
     return compArray[random];
 }
 
-/*function playRound(userChoice, userScore, computerScore) {
-let compChoice = computerPlay();
-
-    if (compChoice == userChoice) {
-        output.textContent = `tie. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (compChoice === 'rock' && userChoice === 'scissors') {
-        computerScore++;
-        output.textContent = `comp wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (compChoice === 'paper' && userChoice === 'rock') {
-        computerScore++;
-        output.textContent = `comp wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (compChoice === 'scissors' && userChoice === 'paper') {
-        computerScore++;
-        output.textContent = `comp wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (userChoice === 'rock' && compChoice === 'scissors') {
-        userScore++;
-        output.textContent = `user wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (userChoice === 'paper' && compChoice === 'rock') {
-        userScore++;
-        output.textContent = `user wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    else if (userChoice === 'scissors' && compChoice === 'paper') {
-        userScore++;
-        output.textContent = `user wins. user: ${userChoice} comp: ${compChoice}`;
-    }
-    return [userScore, computerScore];
-}*/
 function playRound(userChoice, userScore, computerScore) {
 let compChoice = computerPlay();
 
     if (compChoice == userChoice) {
         output.textContent = `Tie.`;
-        update.textContent = `User: ${userChoice} & Computer: ${compChoice}`;
+        updateUser.textContent = `User: ${userChoice}`;
+        updateComp.textContent = `Computer: ${compChoice}`;
+        compScoreId.id = 'comp-score';
+        userScoreId.id = 'user-score';
+        updateUser.id = 'update-user';
+        updateComp.id = 'update-comp';
+
     }
     else if (compChoice == winDictionary[userChoice]) {
         userScore++;
         output.textContent = `Point to User!`;
-        update.textContent = `User: ${userChoice} & Computer: ${compChoice}`;
-
+        updateUser.textContent = `User: ${userChoice}`;
+        updateUser.id = 'update-user-active';
+        updateComp.textContent = `Computer: ${compChoice}`;
+        updateComp.id = 'update-comp';
+        userScoreId.id = 'user-score-active';
+        compScoreId.id = 'comp-score';
     }    
     else {
         computerScore++;
         output.textContent = `Point to Computer!`;
-        update.textContent = `User: ${userChoice} & Computer: ${compChoice}`;
+        updateUser.textContent = `User: ${userChoice}`;
+        updateUser.id = 'update-user';
+        updateComp.textContent = `Computer: ${compChoice}`;
+        updateComp.id = 'update-comp-active';
+        compScoreId.id = 'comp-score-active';
+        userScoreId.id = 'user-score';
     }
     return [userScore, computerScore];
 
@@ -101,17 +95,25 @@ function game(userChoice) {
     computer.textContent = `Computer Score: ${computerScore}`;
 
     if (userScore == 5) {
-        output.textContent = "Wow. You won.";
+        output.textContent = '';
         userScore = 0;
         computerScore = 0;
         user.textContent = `User Score: ${userScore}`;
         computer.textContent = `Computer Score: ${computerScore}`;
+        modalOverlay.classList.add('active')
+        winnerOutput.textContent = "Wow. You won."
     }
     else if (computerScore == 5) {
-        output.textContent = "You lost lol";
+        output.textContent = '';
         userScore = 0;
         computerScore = 0;
         user.textContent = `User Score: ${userScore}`;
         computer.textContent = `Computer Score: ${computerScore}`;
+        modalOverlay.classList.add('active')
+        winnerOutput.textContent = "You lost. Lol."
     }
+}
+
+function restartGame() {
+    modalOverlay.classList.remove('active');
 }

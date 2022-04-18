@@ -7,30 +7,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
     <script src="index.js" async></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="icon" href="🧠">
+    <title>Rock/Paper/Scissors</title>
 
 </head>
 <body>
-    <div class="container">
-    <h1 class=header>Rock</h1>
-    <h1 class=header>Paper</h1>
-    <h1 class=header>Scissors</h1>
-    </div>
+    <div id="container">
+        <div class="container">
+        <h1 class=header>Rock Paper Scissors</h1>
+        </div>
 
-    <div class="container-text">
-        <p class="text" id="output">Click Rock, Paper, or Scissors to Start!</p>
-        <p class="text" id="update"></p>
-    </div>
+        <div class="container-text">
+            <p class="text" id="output">Click Rock, Paper, or Scissors to Start!</p>
+            <p class="text" id="update-user"></p>
+            <p class="text" id="update-comp"></p>
+        </div>
 
-    <div class="buttons">
-        <button class="btn" id="rock">👊</button>
-        <button class="btn" id="paper">🖐</button>
-        <button class="btn" id="scissors">✌️</button>
-    </div>
-    
-    <div class="text-line">
-        <p class="text" id="user-score">User Score:</p>
-        <p class="text" id="comp-score">Computer Score:</p>
+        <div class="buttons">
+            <button class="btn" id="rock">👊</button>
+            <button class="btn" id="paper">🖐</button>
+            <button class="btn" id="scissors">✌️</button>
+        </div>
+
+        <div class="text-line">
+            <p class="text" id="user-score">User Score:</p>
+            <p class="text" id="comp-score">Computer Score:</p>
+        </div>
+        <div class="modal-overlay">
+            <div class="modal-container">
+                <p class="winner-output">test</p>
+                <button class="restart">Play Again</button>
+            </div>
+        </div>
     </div>
 
 </body>

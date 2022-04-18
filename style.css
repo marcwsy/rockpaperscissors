@@ -1,12 +1,29 @@
+:root {
+    --background-p-one: rgb(135, 150, 197);
+    --background-p-two: rgb(204, 205, 215);
+    --text-win-color: rgb(254, 147, 147);
+    --win-background: rgb(239, 239, 239);
+}
+
 body {
-    background-color: lightgray;
+    background-color: var(--background-p-one);
     font-family: 'Staatliches', cursive;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+button {
+    cursor: pointer;
 }
 
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 .container-text {
@@ -20,6 +37,7 @@ body {
     font-size: 75px;
     margin: 20px;
     margin-bottom: 0px;
+    
 }
 
 .buttons {
@@ -44,4 +62,47 @@ body {
 .text {
     margin: 25px;
     font-size: 30px;
+}
+
+#update-user-active, #update-comp-active, #user-score-active, #comp-score-active {
+    color: var(--text-win-color);
+}
+
+#output, .header, #update-user, #update-comp, #user-score, #comp-score {
+    color: var(--background-p-two);
+}
+
+#rock:hover, #paper:hover, #scissors:hover {
+    transform: scale(1.2);
+}
+
+.modal-overlay {
+    position: fixed;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(5, 5, 5, 0.3);
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+}
+
+.modal-container {
+    display: flex;
+    height: 180px;
+    width: 300px;
+    background-color: var(--win-background);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.winner-output {
+    font-size: 40px;
+    margin: 0;
+    color: var(--text-win-color);
 }
